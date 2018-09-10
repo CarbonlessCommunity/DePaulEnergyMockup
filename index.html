@@ -1,0 +1,85 @@
+<!doctype HTML>
+<head>
+    <style>
+        body {
+            background-size: cover;
+        }
+
+        header {
+            display: block;
+            margin: 0 auto;
+            width: 250px;
+            height: 75px;
+            font-size: 16pt;
+            background-color: #FFFFFF;
+            border-radius: 40px;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        header > p {
+            padding-top: 25px;
+        }
+
+        .SVGH {
+            text-align: center;
+            padding: 10px;
+            background-color: #FFFFFF;
+            border-radius: 40px;
+            width: 650px;
+            height: 525px;
+            margin: 10 auto;
+        }
+
+        .flexbox {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+        }
+
+    </style>
+</head>
+<body>
+    <header>
+        <p>
+            DePaul Clean Energy
+        </p>
+    </header>
+    <br>
+    <br>
+    <br>
+    <div class="flexbox">
+        <div id="SVGHolder" class="SVGH">
+        </div>
+        <div id="SVGHolder2" class="SVGH">
+        </div>
+    </div>
+</body>
+<script type="text/javascript" src="SVG.js"></script>
+<script type="text/javascript">
+    currentStep = 0
+
+    var SVGHolder = document.getElementById('SVGHolder');
+    var SVGHolder2 = document.getElementById('SVGHolder2');
+    imageUrl = "images/solar" + currentStep + ".jpg";
+    SVGFileName = SVGIndexes[currentStep];
+    console.log(SVGFileName);
+    SVGHolder.innerHTML = SVGFiles[SVGFileName];
+    SVGHolder2.innerHTML = SVGFiles2[SVGFileName]
+    document.body.style.backgroundImage = "url(" + imageUrl + ")";
+
+    setInterval(() =>  {
+        imageUrl = "images/solar" + currentStep + ".jpg";
+        SVGFileName = SVGIndexes[currentStep];
+        SVGHolder.innerHTML = SVGFiles[SVGFileName];
+        SVGHolder2.innerHTML = SVGFiles2[SVGFileName]
+        document.body.style.backgroundImage = "url(" + imageUrl + ")";
+        if(currentStep == 3) {
+            currentStep = 0
+        } else {
+            currentStep += 1;
+        }
+
+    }, 6000);
+</script>
